@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
                 int year = c.get(Calendar.YEAR);
                 int month = c.get(Calendar.MONTH);
                 month++;
+
                 int day = c.get(Calendar.DAY_OF_MONTH);
 
                 String fecha = day+"/" +month+ "/"+year;
