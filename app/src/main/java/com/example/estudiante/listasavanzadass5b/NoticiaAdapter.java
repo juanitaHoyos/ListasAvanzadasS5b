@@ -1,11 +1,14 @@
 package com.example.estudiante.listasavanzadass5b;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -39,7 +42,7 @@ public class NoticiaAdapter extends BaseAdapter{
 
     //genera 1 renglonXobjeto
     @Override
-    public View getView(int position, View view, ViewGroup viewGroup) {
+    public View getView(final int position, View view, ViewGroup viewGroup) {
         //inflater transforma xml en vista
         LayoutInflater inflater= activity.getLayoutInflater();
 
@@ -47,10 +50,20 @@ public class NoticiaAdapter extends BaseAdapter{
         TextView item_titulo = renglon.findViewById(R.id.item_titulo);
         TextView item_fecha = renglon.findViewById(R.id.item_fecha);
         TextView item_descripcion = renglon.findViewById(R.id.item_descripcion);
+        Button item_action = renglon.findViewById(R.id.item_action);
 
         item_titulo.setText(noticias.get(position).getTitulo());
         item_fecha.setText(noticias.get(position).getFecha());
         item_descripcion.setText(noticias.get(position).getDescripcion());
+        item_action.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+             //noticias.remove(position);
+             //notifyDataSetChanged();
+                Intent intent = new Intent(activity, NoticiaView.class);
+                activity.startActivity(intent);
+            }
+        });
 
         return renglon;
     }
